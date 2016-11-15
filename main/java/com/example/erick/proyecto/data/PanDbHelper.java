@@ -1,5 +1,6 @@
 package com.example.erick.proyecto.data;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -17,14 +18,23 @@ public class PanDbHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase){
-        sqLiteDatabase.execSQL("CREATE TABLE " + ListaPan.PanEntry.TABLE_NAME + " ("
+    public void onCreate(SQLiteDatabase db){
+        db.execSQL("CREATE TABLE " + ListaPan.PanEntry.TABLE_NAME + " ("
             + ListaPan.PanEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
             + ListaPan.PanEntry.ID + " TEXT NOT NULL,"
             + ListaPan.PanEntry.NAME + " TEXT NOT NULL,"
             + ListaPan.PanEntry.DESCR + " TEXT NOT NULL,"
             + ListaPan.PanEntry.PRECIO + " NUMBER NOT NULL,"
             + "UNIQUE (" + ListaPan.PanEntry.ID + "))");
+
+        ContentValues values = new ContentValues();
+
+        values.put(ListaPan.PanEntry.ID, "P-001");
+        values.put(ListaPan.PanEntry.NAME, "Bolillo");
+        values.put(ListaPan.PanEntry.DESCR, "Un clásico :v");
+        values.put(ListaPan.PanEntry.PRECIO, "1.50");
+
+        db.insert(ListaPan.PanEntry.TABLE_NAME, null, values);
     }
 
     @Override
