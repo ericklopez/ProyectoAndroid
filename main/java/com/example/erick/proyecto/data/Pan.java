@@ -23,16 +23,32 @@ public class Pan {
         return id;
     }
 
+    public void setId(){
+        this.id = id;
+    }
+
     public String getNombre(){
         return nombre;
+    }
+
+    public void setNombre(){
+        this.nombre = nombre;
     }
 
     public String getDescripcion(){
         return descripcion;
     }
 
+    public void setDescripcion(){
+        this.descripcion = descripcion;
+    }
+
     public int getPrecio(){
         return precio;
+    }
+
+    public void setPrecio(){
+        this.precio = precio;
     }
 
 }
